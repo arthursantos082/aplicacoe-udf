@@ -1,6 +1,35 @@
+body{
+
+	background-image: url(../images/image7.png);
+	background-size: cover;
+}
+
 .logo {
     font-family: "Pirata One", system-ui;
     font-weight: 400;
     font-style: normal;
     font-size: 3rem;
+}
+
+p{
+    font-size: 1.1rem;
+}
+
+.resumo{
+    box-sizing: border-box;
+    position: relative;
+	background: #fff;
+	background-clip: padding-box;
+
+	border: solid 8px transparent;
+	border-radius: 0.8rem;
+    display: grid;
+	place-items: center;
+	min-height: 200px;
+	border: 1px solid;
+	padding: 1rem;
+}
+
+h1{
+	color: #fff;
 }
