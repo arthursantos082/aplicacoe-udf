@@ -37,9 +37,9 @@
               </ul>
             </li>
           </ul>
-          <form class="d-flex mt-3 mt-lg-0">
-            <input type="text" class="form-control me-2" placeholder="Pesquisar treino, dicas..." />
-            <button class="btn btn-dark"><i class="fa fa-search"></i></button>
+          <form class="d-flex" role="search" onsubmit="return false;">
+            <input id="searchInput" class="form-control me-2" type="search" placeholder="Pesquisar..." aria-label="Search"/>
+            <button class="btn btn-dark" type="submit" onclick="search()"><i class="fa fa-search"></i></button>
           </form>
         </div>
       </div>
@@ -179,6 +179,51 @@
       <p>&copy; 2025 Arthur Santos Aguiar. Todos os direitos reservados.</p>
     </div>
   </footer>
+  
+  <!--foi necessário utilizar o chatgpt para realizar este campo, visto que ainda nao nos foi ensinado JS e eu queria deixar pelo menos tudo funcional no site...-->>
+  <script>
+  function search() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    const sections = document.querySelectorAll('.resumo');
+
+    let firstFound = false;
+
+    cards.forEach(card => {
+      card.style.border = '';
+    });
+
+    sections.forEach(section => {
+      section.style.backgroundColor = '';
+    });
+
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      if (text.includes(input) && input.trim() !== '') {
+        card.style.border = '3px solid red';
+        if (!firstFound) {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          firstFound = true;
+        }
+      }
+    });
+
+    sections.forEach(section => {
+      const text = section.innerText.toLowerCase();
+      if (text.includes(input) && input.trim() !== '') {
+        section.style.backgroundColor = '#fff9c4';
+        if (!firstFound) {
+          section.scrollIntoView({ behavior: "smooth", block: "center" });
+          firstFound = true;
+        }
+      }
+    });
+
+    if (!firstFound) {
+      alert('Nenhum resultado encontrado.');
+    }
+  }
+  </script>
 
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
